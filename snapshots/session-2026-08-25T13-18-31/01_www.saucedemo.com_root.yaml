@@ -1,0 +1,25 @@
+# URL: https://www.saucedemo.com/
+# Title: Swag Labs
+# Viewport: 1042x632
+# Captured: 2026-08-25T17:19:06Z
+# Trigger: manual
+# Step: 1
+# Session goal: Login, add backpack to cart, checkout
+
+- form:
+  locators:
+    - {by: css, value: "#login_button_container > div:nth-child(1) > form:nth-child(1)", stability: low}
+  - textbox "Username":
+    value: ""
+    locators:
+      - {by: testid, value: "username", stability: high}
+  - textbox "Password":
+    value: "***"
+    locators:
+      - {by: testid, value: "password", stability: high}
+  - button "login-button":
+    value: "Login"
+    locators:
+      - {by: testid, value: "login-button", stability: high}
+- heading "Accepted usernames are:" [level=4]
+- heading "Password for all users:" [level=4]

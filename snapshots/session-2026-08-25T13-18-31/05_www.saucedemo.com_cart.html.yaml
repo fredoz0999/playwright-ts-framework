@@ -1,0 +1,38 @@
+# URL: https://www.saucedemo.com/cart.html
+# Title: Swag Labs
+# Viewport: 1042x632
+# Captured: 2026-08-25T17:20:44Z
+# Trigger: manual
+# Step: 5
+# Session goal: Login, add backpack to cart, checkout
+
+- button "Open Menu":
+  locators:
+    - {by: id, value: "react-burger-menu-btn", stability: high}
+- img "Open Menu"
+- link "Sauce Labs Backpack":
+  locators:
+    - {by: testid, value: "item-4-title-link", stability: high}
+- button "Remove":
+  locators:
+    - {by: testid, value: "remove-sauce-labs-backpack", stability: high}
+- button "Continue Shopping":
+  locators:
+    - {by: testid, value: "continue-shopping", stability: high}
+  - img "Go back"
+- button "Checkout":
+  locators:
+    - {by: testid, value: "checkout", stability: high}
+- list
+  - listitem
+    - link "Twitter":
+      locators:
+        - {by: testid, value: "social-twitter", stability: high}
+  - listitem
+    - link "Facebook":
+      locators:
+        - {by: testid, value: "social-facebook", stability: high}
+  - listitem
+    - link "LinkedIn":
+      locators:
+        - {by: testid, value: "social-linkedin", stability: high}
