@@ -24,8 +24,7 @@ test.describe("Sauce Demo checkout", () => {
     await inventoryPage.addBackpack.click();
     await expect(inventoryPage.removeBackpack).toBeVisible();
 
-    // Shopping cart header control was not in the lean YAML; use the captured cart URL.
-    await page.goto("/cart.html");
+    await inventoryPage.shoppingCart.click();
     await expect(page).toHaveURL(/\/cart\.html/);
     await expect(cartPage.backpackTitle).toBeVisible();
     await expect(cartPage.checkout).toBeVisible();

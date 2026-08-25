@@ -1,0 +1,104 @@
+# URL: https://www.saucedemo.com/inventory.html
+# Title: Swag Labs
+# Viewport: 1042x632
+# Captured: 2026-08-25T17:31:51Z
+# Trigger: manual
+# Step: 1
+# Session goal: Recapture inventory after add-to-cart for shopping-cart-link
+
+- button "Open Menu":
+  locators:
+    - {by: id, value: "react-burger-menu-btn", stability: high}
+- img "Open Menu"
+- link "1":
+  locators:
+    - {by: testid, value: "shopping-cart-link", stability: high}
+- combobox:
+  value: "az"
+  locators:
+    - {by: testid, value: "product-sort-container", stability: high}
+  options:  # native <select> - available without opening UI
+    - option "Name (A to Z)" [selected]
+    - option "Name (Z to A)"
+    - option "Price (low to high)"
+    - option "Price (high to low)"
+- link:
+  locators:
+    - {by: testid, value: "item-4-img-link", stability: high}
+  - img "Sauce Labs Backpack"
+- link "Sauce Labs Backpack":
+  locators:
+    - {by: testid, value: "item-4-title-link", stability: high}
+- button "Remove":
+  locators:
+    - {by: testid, value: "remove-sauce-labs-backpack", stability: high}
+- link:
+  locators:
+    - {by: testid, value: "item-0-img-link", stability: high}
+  - img "Sauce Labs Bike Light"
+- link "Sauce Labs Bike Light":
+  locators:
+    - {by: testid, value: "item-0-title-link", stability: high}
+- button "Add to cart" [dup 1/5]:
+  locators:
+    - {by: testid, value: "add-to-cart-sauce-labs-bike-light", stability: high}
+- link:
+  locators:
+    - {by: testid, value: "item-1-img-link", stability: high}
+  - img "Sauce Labs Bolt T-Shirt"
+- link "Sauce Labs Bolt T-Shirt":
+  locators:
+    - {by: testid, value: "item-1-title-link", stability: high}
+- button "Add to cart" [dup 2/5]:
+  locators:
+    - {by: testid, value: "add-to-cart-sauce-labs-bolt-t-shirt", stability: high}
+- link:
+  locators:
+    - {by: testid, value: "item-5-img-link", stability: high}
+  - img "Sauce Labs Fleece Jacket"
+- link "Sauce Labs Fleece Jacket":
+  locators:
+    - {by: testid, value: "item-5-title-link", stability: high}
+- button "Add to cart" [dup 3/5]:
+  locators:
+    - {by: testid, value: "add-to-cart-sauce-labs-fleece-jacket", stability: high}
+- link:
+  locators:
+    - {by: testid, value: "item-2-img-link", stability: high}
+  - img "Sauce Labs Onesie"
+- link "Sauce Labs Onesie":
+  locators:
+    - {by: testid, value: "item-2-title-link", stability: high}
+- button "Add to cart" [dup 4/5]:
+  locators:
+    - {by: testid, value: "add-to-cart-sauce-labs-onesie", stability: high}
+- link:
+  locators:
+    - {by: testid, value: "item-3-img-link", stability: high}
+  - img "Test.allTheThings() T-Shirt (Red)"
+- link "Test.allTheThings() T-Shirt (Red)":
+  locators:
+    - {by: testid, value: "item-3-title-link", stability: high}
+- button "Add to cart" [dup 5/5]:
+  locators:
+    - {by: testid, value: "add-to-cart-test.allthethings()-t-shirt-(red)", stability: high}
+- list
+  - listitem
+    - link "Twitter":
+      locators:
+        - {by: testid, value: "social-twitter", stability: high}
+  - listitem
+    - link "Facebook":
+      locators:
+        - {by: testid, value: "social-facebook", stability: high}
+  - listitem
+    - link "LinkedIn":
+      locators:
+        - {by: testid, value: "social-linkedin", stability: high}
+
+# --- All <select> options ---
+# <select> "unnamed":
+#   - Name (A to Z) (selected)
+#   - Name (Z to A)
+#   - Price (low to high)
+#   - Price (high to low)
