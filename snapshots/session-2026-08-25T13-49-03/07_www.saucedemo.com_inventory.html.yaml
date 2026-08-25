@@ -1,0 +1,222 @@
+# URL: https://www.saucedemo.com/inventory.html
+# Title: Swag Labs
+# Viewport: 1042x632
+# Captured: 2026-08-25T17:55:03Z
+# Trigger: manual
+# Step: 7
+# Note: assert: cart badge is 2
+# Session goal: Login, sort price low-high, add backpack and bike light, assert cart badge, remove bike light, checkout, logout
+
+- generic:
+  locators:
+    - {by: testid, value: "header-container", stability: high}
+  - generic "Open Menu Swag Labs 2":
+    locators:
+      - {by: testid, value: "primary-header", stability: high}
+    - button "Open Menu":
+      locators:
+        - {by: id, value: "react-burger-menu-btn", stability: high}
+    - img "Open Menu"
+    - link "2":
+      locators:
+        - {by: testid, value: "shopping-cart-link", stability: high}
+      - generic "2":
+        locators:
+          - {by: testid, value: "shopping-cart-badge", stability: high}
+  - generic:
+    locators:
+      - {by: testid, value: "secondary-header", stability: high}
+    - generic "Products":
+      locators:
+        - {by: testid, value: "title", stability: high}
+    - generic "Price (low to high)":
+      locators:
+        - {by: testid, value: "active-option", stability: high}
+    - combobox:
+      value: "lohi"
+      locators:
+        - {by: testid, value: "product-sort-container", stability: high}
+      options:  # native <select> - available without opening UI
+        - option "Name (A to Z)"
+        - option "Name (Z to A)"
+        - option "Price (low to high)" [selected]
+        - option "Price (high to low)"
+- generic:
+  locators:
+    - {by: testid, value: "inventory-container", stability: high}
+  - generic:
+    locators:
+      - {by: testid, value: "inventory-list", stability: high}
+    - generic:
+      locators:
+        - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)", stability: low}
+      - link:
+        locators:
+          - {by: testid, value: "item-2-img-link", stability: high}
+        - img "Sauce Labs Onesie"
+      - generic:
+        locators:
+          - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - link "Sauce Labs Onesie":
+          locators:
+            - {by: testid, value: "item-2-title-link", stability: high}
+          - generic "Sauce Labs Onesie":
+            locators:
+              - {by: css, value: "#item_2_title_link > div:nth-child(1)", stability: low}
+        - generic:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - generic "$7.99":
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)", stability: low}
+        - button "Add to cart" [dup 1/4]:
+          locators:
+            - {by: testid, value: "add-to-cart-sauce-labs-onesie", stability: high}
+    - generic:
+      locators:
+        - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)", stability: low}
+      - link:
+        locators:
+          - {by: testid, value: "item-0-img-link", stability: high}
+        - img "Sauce Labs Bike Light"
+      - generic:
+        locators:
+          - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)", stability: low}
+        - link "Sauce Labs Bike Light":
+          locators:
+            - {by: testid, value: "item-0-title-link", stability: high}
+          - generic "Sauce Labs Bike Light":
+            locators:
+              - {by: css, value: "#item_0_title_link > div:nth-child(1)", stability: low}
+        - generic:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - generic "$9.99":
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)", stability: low}
+        - button "Remove" [dup 1/2]:
+          locators:
+            - {by: testid, value: "remove-sauce-labs-bike-light", stability: high}
+    - generic:
+      locators:
+        - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3)", stability: low}
+      - link:
+        locators:
+          - {by: testid, value: "item-1-img-link", stability: high}
+        - img "Sauce Labs Bolt T-Shirt"
+      - generic:
+        locators:
+          - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)", stability: low}
+        - link "Sauce Labs Bolt T-Shirt":
+          locators:
+            - {by: testid, value: "item-1-title-link", stability: high}
+          - generic "Sauce Labs Bolt T-Shirt":
+            locators:
+              - {by: css, value: "#item_1_title_link > div:nth-child(1)", stability: low}
+        - generic:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - generic "$15.99" [dup 1/2]:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)", stability: low}
+        - button "Add to cart" [dup 2/4]:
+          locators:
+            - {by: testid, value: "add-to-cart-sauce-labs-bolt-t-shirt", stability: high}
+    - generic:
+      locators:
+        - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4)", stability: low}
+      - link:
+        locators:
+          - {by: testid, value: "item-3-img-link", stability: high}
+        - img "Test.allTheThings() T-Shirt (Red)"
+      - generic:
+        locators:
+          - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2)", stability: low}
+        - link "Test.allTheThings() T-Shirt (Red)":
+          locators:
+            - {by: testid, value: "item-3-title-link", stability: high}
+          - generic "Test.allTheThings() T-Shirt (Red)":
+            locators:
+              - {by: css, value: "#item_3_title_link > div:nth-child(1)", stability: low}
+        - generic:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - generic "$15.99" [dup 2/2]:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)", stability: low}
+        - button "Add to cart" [dup 3/4]:
+          locators:
+            - {by: testid, value: "add-to-cart-test.allthethings()-t-shirt-(red)", stability: high}
+    - generic:
+      locators:
+        - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5)", stability: low}
+      - link:
+        locators:
+          - {by: testid, value: "item-4-img-link", stability: high}
+        - img "Sauce Labs Backpack"
+      - generic:
+        locators:
+          - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2)", stability: low}
+        - link "Sauce Labs Backpack":
+          locators:
+            - {by: testid, value: "item-4-title-link", stability: high}
+          - generic "Sauce Labs Backpack":
+            locators:
+              - {by: css, value: "#item_4_title_link > div:nth-child(1)", stability: low}
+        - generic:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - generic "$29.99":
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)", stability: low}
+        - button "Remove" [dup 2/2]:
+          locators:
+            - {by: testid, value: "remove-sauce-labs-backpack", stability: high}
+    - generic:
+      locators:
+        - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6)", stability: low}
+      - link:
+        locators:
+          - {by: testid, value: "item-5-img-link", stability: high}
+        - img "Sauce Labs Fleece Jacket"
+      - generic:
+        locators:
+          - {by: css, value: "#contents_wrapper > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2)", stability: low}
+        - link "Sauce Labs Fleece Jacket":
+          locators:
+            - {by: testid, value: "item-5-title-link", stability: high}
+          - generic "Sauce Labs Fleece Jacket":
+            locators:
+              - {by: css, value: "#item_5_title_link > div:nth-child(1)", stability: low}
+        - generic:
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)", stability: low}
+        - generic "$49.99":
+          locators:
+            - {by: css, value: "div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)", stability: low}
+        - button "Add to cart" [dup 4/4]:
+          locators:
+            - {by: testid, value: "add-to-cart-sauce-labs-fleece-jacket", stability: high}
+- list
+  - listitem
+    - link "Twitter":
+      locators:
+        - {by: testid, value: "social-twitter", stability: high}
+  - listitem
+    - link "Facebook":
+      locators:
+        - {by: testid, value: "social-facebook", stability: high}
+  - listitem
+    - link "LinkedIn":
+      locators:
+        - {by: testid, value: "social-linkedin", stability: high}
+- generic:
+  locators:
+    - {by: testid, value: "footer-copy", stability: high}
+
+# --- All <select> options ---
+# <select> "unnamed":
+#   - Name (A to Z)
+#   - Name (Z to A)
+#   - Price (low to high) (selected)
+#   - Price (high to low)

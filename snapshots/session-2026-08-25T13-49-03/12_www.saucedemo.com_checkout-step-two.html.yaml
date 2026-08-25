@@ -1,0 +1,107 @@
+# URL: https://www.saucedemo.com/checkout-step-two.html
+# Title: Swag Labs
+# Viewport: 1042x632
+# Captured: 2026-08-25T17:59:54Z
+# Trigger: manual
+# Step: 12
+# Session goal: Login, sort price low-high, add backpack and bike light, assert cart badge, remove bike light, checkout, logout
+
+- generic "Open Menu Swag Labs 1 Checkout: Overview":
+  locators:
+    - {by: testid, value: "header-container", stability: high}
+  - generic "Open Menu Swag Labs 1":
+    locators:
+      - {by: testid, value: "primary-header", stability: high}
+    - button "Open Menu":
+      locators:
+        - {by: id, value: "react-burger-menu-btn", stability: high}
+    - img "Open Menu"
+    - link "1":
+      locators:
+        - {by: testid, value: "shopping-cart-link", stability: high}
+      - generic "1" [dup 1/2]:
+        locators:
+          - {by: testid, value: "shopping-cart-badge", stability: high}
+  - generic "Checkout: Overview" [dup 1/2]:
+    locators:
+      - {by: testid, value: "secondary-header", stability: high}
+    - generic "Checkout: Overview" [dup 2/2]:
+      locators:
+        - {by: testid, value: "title", stability: high}
+- generic:
+  locators:
+    - {by: testid, value: "checkout-summary-container", stability: high}
+  - generic:
+    locators:
+      - {by: testid, value: "cart-list", stability: high}
+    - generic "QTY":
+      locators:
+        - {by: testid, value: "cart-quantity-label", stability: high}
+    - generic "Description":
+      locators:
+        - {by: testid, value: "cart-desc-label", stability: high}
+    - generic:
+      locators:
+        - {by: testid, value: "inventory-item", stability: high}
+      - generic "1" [dup 2/2]:
+        locators:
+          - {by: testid, value: "item-quantity", stability: high}
+      - link "Sauce Labs Backpack":
+        locators:
+          - {by: testid, value: "item-4-title-link", stability: high}
+        - generic "Sauce Labs Backpack":
+          locators:
+            - {by: testid, value: "inventory-item-name", stability: high}
+      - generic:
+        locators:
+          - {by: testid, value: "inventory-item-desc", stability: high}
+      - generic "$29.99":
+        locators:
+          - {by: testid, value: "inventory-item-price", stability: high}
+  - generic "Payment Information:":
+    locators:
+      - {by: testid, value: "payment-info-label", stability: high}
+  - generic "SauceCard #31337":
+    locators:
+      - {by: testid, value: "payment-info-value", stability: high}
+  - generic "Shipping Information:":
+    locators:
+      - {by: testid, value: "shipping-info-label", stability: high}
+  - generic "Free Pony Express Delivery!":
+    locators:
+      - {by: testid, value: "shipping-info-value", stability: high}
+  - generic "Price Total":
+    locators:
+      - {by: testid, value: "total-info-label", stability: high}
+  - generic "Item total: $29.99":
+    locators:
+      - {by: testid, value: "subtotal-label", stability: high}
+  - generic "Tax: $2.40":
+    locators:
+      - {by: testid, value: "tax-label", stability: high}
+  - generic "Total: $32.39":
+    locators:
+      - {by: testid, value: "total-label", stability: high}
+  - button "Cancel":
+    locators:
+      - {by: testid, value: "cancel", stability: high}
+    - img "Go back"
+  - button "Finish":
+    locators:
+      - {by: testid, value: "finish", stability: high}
+- list
+  - listitem
+    - link "Twitter":
+      locators:
+        - {by: testid, value: "social-twitter", stability: high}
+  - listitem
+    - link "Facebook":
+      locators:
+        - {by: testid, value: "social-facebook", stability: high}
+  - listitem
+    - link "LinkedIn":
+      locators:
+        - {by: testid, value: "social-linkedin", stability: high}
+- generic:
+  locators:
+    - {by: testid, value: "footer-copy", stability: high}

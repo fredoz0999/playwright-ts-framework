@@ -15,6 +15,7 @@ export class LoginPage {
   readonly password: Locator;
   readonly loginButton: Locator;
   readonly error: Locator;
+  readonly loginContainer: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -22,6 +23,7 @@ export class LoginPage {
     this.password = page.getByTestId("password");
     this.loginButton = page.getByTestId("login-button");
     this.error = page.getByTestId("error");
+    this.loginContainer = page.getByTestId("login-container");
   }
 
   async goto(): Promise<void> {

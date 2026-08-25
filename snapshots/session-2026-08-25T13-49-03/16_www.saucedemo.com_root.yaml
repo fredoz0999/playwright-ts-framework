@@ -1,0 +1,38 @@
+# URL: https://www.saucedemo.com/
+# Title: Swag Labs
+# Viewport: 1042x632
+# Captured: 2026-08-25T18:02:29Z
+# Trigger: manual
+# Step: 16
+# Note: assert: logged outassert: logged out
+# Session goal: Login, sort price low-high, add backpack and bike light, assert cart badge, remove bike light, checkout, logout
+
+- generic:
+  locators:
+    - {by: testid, value: "login-container", stability: high}
+  - form:
+    locators:
+      - {by: css, value: "#login_button_container > div:nth-child(1) > form:nth-child(1)", stability: low}
+    - textbox "Username":
+      value: ""
+      locators:
+        - {by: testid, value: "username", stability: high}
+    - textbox "Password":
+      value: "***"
+      locators:
+        - {by: testid, value: "password", stability: high}
+    - button "login-button":
+      value: "Login"
+      locators:
+        - {by: testid, value: "login-button", stability: high}
+  - generic:
+    locators:
+      - {by: testid, value: "login-credentials-container", stability: high}
+    - generic:
+      locators:
+        - {by: testid, value: "login-credentials", stability: high}
+      - heading "Accepted usernames are:" [level=4]
+    - generic "Password for all users: secret_sauce":
+      locators:
+        - {by: testid, value: "login-password", stability: high}
+      - heading "Password for all users:" [level=4]
