@@ -6,8 +6,8 @@ import type { Locator, Page } from "@playwright/test";
  * Selenium analog: a class with @FindBy fields + methods.
  * Locators are lazy — they resolve on click / fill / expect, not in the constructor.
  *
- * Sauce Demo uses data-test (not data-testid). Playwright getByTestId() looks
- * for data-testid unless you set use.testIdAttribute, so these POs use CSS.
+ * Sauce Demo uses data-test (not data-testid). playwright.config.ts sets
+ * testIdAttribute: "data-test", so getByTestId maps to that attribute.
  */
 export class LoginPage {
   readonly page: Page;
@@ -18,10 +18,10 @@ export class LoginPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.username = page.locator("[data-test=username]");
-    this.password = page.locator("[data-test=password]");
-    this.loginButton = page.locator("[data-test=login-button]");
-    this.error = page.locator("[data-test=error]");
+    this.username = page.getByTestId("username");
+    this.password = page.getByTestId("password");
+    this.loginButton = page.getByTestId("login-button");
+    this.error = page.getByTestId("error");
   }
 
   async goto(): Promise<void> {

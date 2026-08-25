@@ -9,8 +9,8 @@ export class InventoryPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.inventoryContainer = page.locator("[data-test=inventory-container]");
-    this.inventoryList = page.locator(".inventory_list");
-    this.title = page.locator("[data-test=title]");
+    this.inventoryContainer = page.getByTestId("inventory-container");
+    this.inventoryList = page.getByTestId("inventory-list");
+    this.title = page.getByTestId("title");
   }
 }
