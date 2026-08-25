@@ -1,0 +1,3 @@
+# PageSnap may copy these into a session folder. They are secrets — never commit.
+cookies.json
+storageState.json
