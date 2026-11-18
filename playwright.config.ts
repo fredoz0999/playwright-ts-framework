@@ -13,7 +13,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  reporter: [['html'], ['list']],
+  // The JSON report is what `qa triage` / `qa heal` (qa-agent lite) and other tools read.
+  reporter: [['html'], ['list'], ['json', { outputFile: 'test-results/report.json' }]],
   use: {
     baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',
     testIdAttribute: "data-test",

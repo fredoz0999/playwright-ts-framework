@@ -46,11 +46,37 @@ Credentials live in `src/data/users.ts`. Page objects: `src/pages/login.page.ts`
 - `tests/` — specs (`*.spec.ts`)
 - `src/pages/` — page objects (Locator fields)
 - `src/fixtures/test.ts` — extend the base test with PO fixtures
+- `src/fixtures/evidence.ts` — page snapshot on failure, optional step screenshots
+- `.github/` — CI workflow plus AI assistant rules and prompt files
 - `src/data/` — test data files
 - `snapshots/` — drop PageSnap `session-*` folders here
 - `docs/from-selenium.md` — Selenium Java cheat sheet
 
 Specs import `{ test, expect }` from `src/fixtures/test`, not from `@playwright/test`, so page objects are injected. That file replaces a Selenium `BaseTest` that constructed every page object in `@BeforeMethod`.
+
+## AI assistant rules
+
+Rules for Copilot, Claude Code and similar tools are checked in, so generated code follows this repo's conventions without repeating them in every prompt.
+
+| File | Loaded | What it holds |
+|------|--------|---------------|
+| `.github/copilot-instructions.md` | every Copilot request | the ten rules that always apply; kept short because it costs tokens each time |
+| `.github/instructions/playwright.instructions.md` | only when working on specs, page objects or fixtures | detailed spec, page object and locator rules |
+| `.github/prompts/spec-from-snapshot.prompt.md` | on demand: `/spec-from-snapshot` in Copilot Chat | the PageSnap session to spec workflow as one command |
+| `CLAUDE.md` | Claude Code | imports the two rule files above, so there is one source |
+
+## Failure evidence
+
+- **Page snapshot on failure.** Every failed test attaches `page-snapshot`: the `data-test` values on the page and its ARIA tree at the moment of failure. It shows at a glance whether a locator stopped matching or the element is really gone, and it is small enough to hand to an assistant.
+- **Step screenshots.** Run with `STEP_SHOTS=1` and every `test.step()` attaches a screenshot when it completes. Off by default to keep CI fast.
+- **JSON report.** Each run also writes `test-results/report.json`, which the lite pipeline in [qa-agent](https://github.com/fredoz0999/qa-agent) reads for triage and locator repair:
+
+```bash
+npx playwright test
+node ../qa-agent/lite/bin/qa.mjs heal PROJ-123 --results test-results/report.json
+```
+
+The code is in `src/fixtures/evidence.ts` and is wired in through `src/fixtures/test.ts`.
 
 ## From a PageSnap capture to a spec
 
