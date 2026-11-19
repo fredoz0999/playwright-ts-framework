@@ -17,6 +17,7 @@
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "@types/node": "^20.17.0",
+    "playwright-ctrf-json-reporter": "^0.2.0",
     "typescript": "^5.6.3"
   }
 }

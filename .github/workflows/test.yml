@@ -18,3 +18,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run tests
         run: npx playwright test
+      - name: Publish test summary
+        uses: ctrf-io/github-test-reporter@v1
+        with:
+          report-path: './ctrf/*.json'
+        if: always()
