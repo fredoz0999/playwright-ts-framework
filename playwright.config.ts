@@ -13,8 +13,15 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  // The JSON report is what `qa triage` / `qa heal` (qa-agent lite) and other tools read.
-  reporter: [['html'], ['list'], ['json', { outputFile: 'test-results/report.json' }]],
+  // report.json is Playwright's own format (page snapshots, error locations): `qa heal` needs it.
+  // ctrf/ctrf-report.json is the Common Test Report Format (ctrf.io): the same shape from any framework,
+  // read by the CI summary step and by `qa triage`.
+  reporter: [
+    ['html'],
+    ['list'],
+    ['json', { outputFile: 'test-results/report.json' }],
+    ['playwright-ctrf-json-reporter', { outputDir: 'ctrf', outputFile: 'ctrf-report.json' }],
+  ],
   use: {
     baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',
     testIdAttribute: "data-test",

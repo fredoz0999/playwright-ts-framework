@@ -69,7 +69,8 @@ Rules for Copilot, Claude Code and similar tools are checked in, so generated co
 
 - **Page snapshot on failure.** Every failed test attaches `page-snapshot`: the `data-test` values on the page and its ARIA tree at the moment of failure. It shows at a glance whether a locator stopped matching or the element is really gone, and it is small enough to hand to an assistant.
 - **Step screenshots.** Run with `STEP_SHOTS=1` and every `test.step()` attaches a screenshot when it completes. Off by default to keep CI fast.
-- **JSON report.** Each run also writes `test-results/report.json`, which the lite pipeline in [qa-agent](https://github.com/fredoz0999/qa-agent) reads for triage and locator repair:
+- **CTRF report.** Each run writes `ctrf/ctrf-report.json` in the [Common Test Report Format](https://ctrf.io), the same JSON shape whatever the framework. CI publishes it as a summary on the workflow run.
+- **JSON report.** Each run also writes `test-results/report.json`, which the lite pipeline in [qa-agent](https://github.com/fredoz0999/qa-agent) reads for locator repair (triage accepts either report):
 
 ```bash
 npx playwright test

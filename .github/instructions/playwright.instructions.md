@@ -11,6 +11,13 @@ applyTo: "tests/**/*.ts,src/pages/**/*.ts,src/fixtures/**/*.ts"
 - After every navigation or state change, assert something a user can see: `toHaveURL`, `toBeVisible`, `toHaveText`.
 - Navigate with relative paths. `baseURL` comes from config or `BASE_URL`.
 
+## Assertions
+- Assert content or state, not bare visibility: `toHaveText`, `toHaveValue`, `toHaveCount`, `toBeChecked`. Use `toBeVisible` only when appearing or disappearing is the behaviour under test.
+- `toHaveText` for the whole text, `toContainText` for a part of it. `toHaveCount` for how many items a list shows.
+- For the structure of a whole component (a menu, a summary panel), one `toMatchAriaSnapshot` beats a dozen single checks.
+- Rely on auto-waiting. Do not raise `timeout` on an action or assertion to get a test through; a slow step is something to report.
+- A locator must match exactly one element. Narrow it (`filter`, a parent test id) instead of adding `.first()`.
+
 ## Page objects
 - A class with `readonly page: Page` and `readonly` `Locator` fields assigned in the constructor. Locators are lazy, so there are no waits in constructors.
 - Methods only for actions that take more than one step (`login(user, pass)`, `fill(...)`). Single clicks are done on the locator from the spec.
