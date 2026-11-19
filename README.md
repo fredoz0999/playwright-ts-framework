@@ -65,6 +65,20 @@ Rules for Copilot, Claude Code and similar tools are checked in, so generated co
 | `.github/prompts/spec-from-snapshot.prompt.md` | on demand: `/spec-from-snapshot` in Copilot Chat | the PageSnap session to spec workflow as one command |
 | `CLAUDE.md` | Claude Code | imports the two rule files above, so there is one source |
 
+## Playwright Test Agents (trial)
+
+Playwright's own planner, generator and healer agents are set up for Copilot in VS Code (generated with `npx playwright init-agents --loop=vscode --prompts`; re-run that after upgrading Playwright).
+
+| Piece | Where |
+|-------|-------|
+| Agent definitions | `.github/agents/playwright-test-{planner,generator,healer}.agent.md` |
+| Ready-made prompts | `/playwright-test-plan`, `/playwright-test-generate`, `/playwright-test-heal`, `/playwright-test-coverage` in Copilot Chat |
+| Browser tools for the agents | `.vscode/mcp.json` (starts `npx playwright run-test-mcp-server`) |
+| Starting point | `tests/seed.spec.ts`: signs in and lands on the inventory page, using this repo's fixtures |
+| Test plans the planner writes | `specs/` |
+
+These run in agent mode and drive a real browser through MCP, so they use far more Copilot credits per task than the `qa heal` step in qa-agent lite, which sends one small prompt. Use them for exploring a new area; check the healer's diffs before keeping them, since it is allowed to change assertions.
+
 ## Failure evidence
 
 - **Page snapshot on failure.** Every failed test attaches `page-snapshot`: the `data-test` values on the page and its ARIA tree at the moment of failure. It shows at a glance whether a locator stopped matching or the element is really gone, and it is small enough to hand to an assistant.
